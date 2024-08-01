@@ -11,14 +11,12 @@ public class SetupTestSteps extends SeleniumUtility {
     @Then("validate top left corner is TEKSCHOOL")
     public void validateTopLeftLogo() {
         String topLeftCornerText = getElementText(By.className("top-nav__logo"));
-        Assert.assertEquals("TEKSCHOOL", topLeftCornerText);
+        Assert.assertEquals("TEKSCHOOL" , topLeftCornerText);
     }
 
     @Then("Validate Sign in button is Enabled")
     public void validateSignInButtonEnabled() {
         boolean isSignInBtnEnabled = isElementEnabled(By.id("signinLink"));
         Assert.assertTrue(isSignInBtnEnabled);
-
-
     }
 }
