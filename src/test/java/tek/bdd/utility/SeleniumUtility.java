@@ -43,4 +43,11 @@ public class SeleniumUtility extends BaseSetup {
                 .isDisplayed();
     }
 
+    public void takeScreenShot() {
+        
+
+
+
+    }
+
 }
