@@ -1,16 +1,19 @@
 package tek.bdd.utility;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import tek.bdd.base.BaseSetup;
 
 import java.time.Duration;
+import java.util.List;
 
 public class SeleniumUtility extends BaseSetup {
+
+    private static final Logger LOGGER = LogManager.getLogger(SeleniumUtility.class);
 
     private WebDriverWait getWait() {
         return new WebDriverWait(getDriver(), Duration.ofSeconds(20));
@@ -21,11 +24,13 @@ public class SeleniumUtility extends BaseSetup {
     }
 
     public void clickOnElement(By locator) {
+        LOGGER.info("Clicking on Element {}", locator);
         getWait().until(ExpectedConditions.elementToBeClickable(locator))
                 .click();
     }
 
     public void sendText(By locator, String value) {
+        LOGGER.info("Sending text {} to locator {}", value, locator);
         waitForVisibility(locator).sendKeys(value);
     }
 
@@ -38,16 +43,18 @@ public class SeleniumUtility extends BaseSetup {
         return waitForVisibility(locator)
                 .isEnabled();
     }
+
     public boolean isElementDisplayed(By locator) {
         return waitForVisibility(locator)
                 .isDisplayed();
     }
 
-    public void takeScreenShot() {
-        
-
-
-
+    public byte[] takeScreenShot() {
+        TakesScreenshot screenShot = (TakesScreenshot) getDriver();
+        return screenShot.getScreenshotAs(OutputType.BYTES);
     }
 
+    public List<WebElement> getElements(By locator) {
+        return getWait().until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
+    }
 }

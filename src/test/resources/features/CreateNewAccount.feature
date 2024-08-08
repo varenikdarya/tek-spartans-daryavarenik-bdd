@@ -1,4 +1,4 @@
-@CreateNewAccount
+@F
 Feature: Create new account functionality
 
 

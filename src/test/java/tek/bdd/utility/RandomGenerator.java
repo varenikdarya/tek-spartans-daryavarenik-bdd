@@ -1,7 +1,5 @@
 package tek.bdd.utility;
 
-import com.github.javafaker.Faker;
-
 import java.util.Random;
 
 public class RandomGenerator {
