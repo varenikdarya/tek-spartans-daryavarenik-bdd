@@ -25,7 +25,7 @@ Feature: Account profile feature
     Then validate Toast Displayed
 
      @UserStory6
-     Scenario: Change password
+    Scenario: Change password
     When user enter "Class2023!" on "Previous Password" field
     When user enter "Class2024!" on "New Password" field
     When user enter "Class2024!" on "Confirm Password" field

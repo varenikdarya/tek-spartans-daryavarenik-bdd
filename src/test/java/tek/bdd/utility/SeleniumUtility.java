@@ -29,6 +29,12 @@ public class SeleniumUtility extends BaseSetup {
                 .click();
     }
 
+    public void clickOnElement(WebElement locator) {
+        getWait().until(ExpectedConditions.elementToBeClickable(locator))
+                .click();
+        LOGGER.info("Clicking on Element {}", locator);
+    }
+
     public void sendText(By locator, String value) {
         LOGGER.info("Clearing And Sending text {} to locator {}", value, locator);
         WebElement element = waitForVisibility(locator);
