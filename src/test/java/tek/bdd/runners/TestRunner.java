@@ -12,8 +12,8 @@ import org.junit.runner.RunWith;
         dryRun = false, //set to true to scan feature for unimplemented steps
         tags = "@UserStory6",
         plugin = {
-                "html:target/cucumber_report/index.html"
-        }
+                "html:target/cucumber_report/index.html",
+                "json:target/jsonReport/report.json"}
 )
 public class TestRunner {
 }
